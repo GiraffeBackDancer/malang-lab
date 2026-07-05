@@ -1,7 +1,6 @@
 const KEYS = {
   MAKER: 'malang_maker_selection',
   RESULT: 'malang_result',
-  SMASH_COUNT: 'malang_smash_total',
   SMASH_MUTE: 'malang_smash_mute',
   SMASH_FREEZE: 'malang_smash_freeze',
 };
@@ -240,11 +239,11 @@ function copyText(text) {
 function buildShareText(result) {
   const { crunch, squishy, destress } = result.scores;
   return [
-    '🧪 말랑연구소 왁뿌볼 카드',
+    '🎪 왁뿌랜드 왁뿌볼 카드',
     `"${result.name}"`,
     `🍪바삭도 ${crunch}% · 🍡말랑도 ${squishy}% · 💆해소력 ${destress}%`,
     '',
-    '나도 왁뿌볼 만들어보기 → 말랑연구소 왁뿌볼 공장',
+    '나도 왁뿌볼 만들어보기 → 왁뿌랜드 왁뿌볼 공장',
   ].join('\n');
 }
 
@@ -385,7 +384,6 @@ function initSmash() {
 
   const result = loadJSON(KEYS.RESULT, null);
   const hud = document.querySelector('.hud');
-  const counterEl = document.getElementById('smashCounter');
   const hintEl = document.getElementById('smashHint');
   const emptyState = document.getElementById('emptyState');
   const brokenState = document.getElementById('brokenState');
@@ -394,7 +392,6 @@ function initSmash() {
   if (!result) {
     canvas.classList.add('hidden');
     if (hud) hud.classList.add('hidden');
-    if (counterEl) counterEl.classList.add('hidden');
     if (hintEl) hintEl.classList.add('hidden');
     if (emptyState) emptyState.classList.remove('hidden');
     return;
@@ -424,7 +421,6 @@ function initSmash() {
   let shake = 0;
   let flash = 0;
   let lastT = performance.now();
-  let brokenCount = parseInt(localStorage.getItem(KEYS.SMASH_COUNT) || '0', 10) || 0;
   let frozen = localStorage.getItem(KEYS.SMASH_FREEZE) === '1';
   let muted = localStorage.getItem(KEYS.SMASH_MUTE) === '1';
   let held = false;
@@ -1167,30 +1163,6 @@ function initSmash() {
     }
   }
 
-  const sparkles = [];
-  for (let i = 0; i < 16; i += 1) sparkles.push({ fx: Math.random(), fy: Math.random(), r: frand(1.5, 4), ph: frand(0, TAU), spd: frand(0.6, 1.6) });
-  function drawSparkles(now) {
-    for (const s of sparkles) {
-      const x = s.fx * W;
-      const y = s.fy * H;
-      const tw = 0.3 + 0.7 * Math.abs(Math.sin(now * 0.001 * s.spd + s.ph));
-      ctx.save();
-      ctx.globalAlpha = tw * 0.5;
-      ctx.translate(x, y);
-      ctx.rotate(s.ph);
-      ctx.fillStyle = 'rgba(255,255,255,.9)';
-      ctx.beginPath();
-      const r = s.r;
-      for (let i = 0; i < 4; i += 1) {
-        const a = i * (Math.PI / 2);
-        ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r);
-        ctx.lineTo(Math.cos(a + 0.4) * r * 0.32, Math.sin(a + 0.4) * r * 0.32);
-      }
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    }
-  }
   function drawShadow() {
     if (!ball) return;
     const sy = ball.cy + ball.R * 0.98;
@@ -1251,14 +1223,6 @@ function initSmash() {
     flash = 0.2;
     shake = reduceMotion ? 4 : 11;
     vibrate([0, 30, 40, 30]);
-    brokenCount += 1;
-    localStorage.setItem(KEYS.SMASH_COUNT, String(brokenCount));
-    const countEl = document.getElementById('smashCount');
-    if (countEl) countEl.textContent = brokenCount;
-    if (counterEl) {
-      counterEl.classList.add('bump');
-      setTimeout(() => counterEl.classList.remove('bump'), 200);
-    }
     ball = null;
     stopTension(true);
     held = false;
@@ -1354,9 +1318,6 @@ function initSmash() {
     if (ball && !ball.spawning && ball.phase === 'core' && ball.coreInteg < 0.98) { riseSound(); ball.wobv -= 6; }
   }
 
-  const countEl = document.getElementById('smashCount');
-  if (countEl) countEl.textContent = brokenCount;
-
   const muteBtn = document.getElementById('muteBtn');
   if (muteBtn) {
     muteBtn.textContent = muted ? '🔈' : '🔊';
@@ -1428,7 +1389,6 @@ function initSmash() {
     if (shake > 0.1 && !reduceMotion) { sx = frand(-shake, shake); sy = frand(-shake, shake); }
     ctx.save();
     ctx.translate(sx, sy);
-    drawSparkles(now);
     drawShadow();
     if (ball) drawBall(now, dt);
     updateDrawFlakes(dt);
