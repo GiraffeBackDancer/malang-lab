@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>내 왁뿌볼 카드 — 말랑연구소</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-container">
+    <header class="site-header">
+      <a href="index.html" class="logo">🧪 말랑연구소</a>
+      <nav class="site-nav">
+        <a href="index.html">홈</a>
+        <a href="about.html">소개</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="resultCard" class="result-card">
+        <div class="ball-stage">
+          <div id="ballPreview" class="wakppul-ball">
+            <div class="ball-toppings" id="ballToppings"></div>
+          </div>
+        </div>
+
+        <span class="result-number" id="resultNumber">No.0000</span>
+        <h1 class="result-name" id="resultName">왁뿌볼</h1>
+
+        <div class="stat-block">
+          <div class="stat-row">
+            <span class="stat-label">🍪 바삭도</span>
+            <div class="stat-bar"><div class="stat-fill fill-crunch" id="crunchFill"></div></div>
+            <span class="stat-value" id="crunchValue">0%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">🍡 말랑도</span>
+            <div class="stat-bar"><div class="stat-fill fill-squishy" id="squishyFill"></div></div>
+            <span class="stat-value" id="squishyValue">0%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">💆 해소력</span>
+            <div class="stat-bar"><div class="stat-fill fill-destress" id="destressFill"></div></div>
+            <span class="stat-value" id="destressValue">0%</span>
+          </div>
+        </div>
+
+        <ul class="summary-list" id="summaryList"></ul>
+
+        <div class="btn-row">
+          <button type="button" id="shareBtn" class="btn-secondary btn-block">📋 공유 문구 복사</button>
+          <button type="button" id="smashBtn" class="btn-primary btn-block">🔨 부수러 가기</button>
+          <button type="button" id="remakeBtn" class="btn-ghost btn-block">🔁 다시 만들기</button>
+        </div>
+      </section>
+
+      <section id="emptyState" class="empty-state hidden">
+        <p>아직 만든 왁뿌볼이 없어요!</p>
+        <a href="maker.html" class="btn-primary">🧫 왁뿌볼 만들러 가기</a>
+      </section>
+    </main>
+
+    <div class="ad-box">광고 영역</div>
+
+    <footer class="site-footer">
+      <p>🧪 말랑연구소 · <a href="about.html">이 사이트는 실제 제작법이 아닌 온라인 놀이용 시뮬레이터입니다</a></p>
+    </footer>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
