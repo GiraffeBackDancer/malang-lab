@@ -52,6 +52,18 @@ python3 -m http.server 8000
 
 이후 브라우저에서 `http://localhost:8000` 접속.
 
+## 배포 방법
+
+빌드 과정이 없는 정적 사이트라 별도 빌드 없이 파일 그대로 배포하면 돼요.
+
+- **배포는 `git push origin main`으로만 합니다.** Netlify CLI, Vercel
+  CLI 등으로 로컬에서 직접 배포하지 않아요.
+- Netlify / Vercel / GitHub Pages 같은 정적 호스팅에 이 저장소를 한 번
+  연결해두면, 이후 `main` 브랜치로 push할 때마다 자동으로 다시
+  배포돼요.
+- 빌드 명령이 필요 없으므로 빌드 커맨드는 비워두고, 배포(퍼블리시)
+  디렉터리만 저장소 루트(`/`)로 지정하면 됩니다.
+
 ## 기술 스택
 
 - HTML5 / CSS3 / Vanilla JavaScript (프레임워크·빌드 도구 없음)
