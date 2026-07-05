@@ -2,51 +2,55 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#1c1430" />
   <title>왁뿌볼 부수기 — 말랑연구소</title>
+  <meta name="description" content="꾹 눌러서 왁뿌볼 껍질을 와그작 깨뜨리고, 속까지 시원하게 으깨며 스트레스를 날려보는 말랑연구소의 부수기 게임." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="말랑연구소" />
+  <meta property="og:title" content="왁뿌볼 부수기 — 말랑연구소" />
+  <meta property="og:description" content="꾹 눌러서 나만의 왁뿌볼을 와그작 부수는 온라인 스트레스 해소 놀이." />
+  <meta property="og:locale" content="ko_KR" />
+  <!-- 실제 배포 시 여기에 Google Analytics / AdSense 스니펫을 추가하세요 -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="page-container">
-    <header class="site-header">
-      <a href="index.html" class="logo">🧪 말랑연구소</a>
-      <nav class="site-nav">
-        <a href="index.html">홈</a>
-        <a href="about.html">소개</a>
-      </nav>
-    </header>
+<body class="smash-page">
+  <h1 class="seo-only">왁뿌볼 부수기 — 말랑연구소</h1>
+  <p class="seo-only">
+    꾹 눌러서 왁뿌볼 껍질을 와그작 깨뜨리고, 속까지 시원하게 으깨는 온라인 스트레스 해소 놀이예요.
+    나만의 왁뿌볼 만들기에서 고른 색상과 바삭도·말랑도 점수에 따라 껍질이 갈라지는 손맛과 속을
+    으깨는 손맛이 달라져요. 설치 없이 브라우저에서 바로 즐길 수 있어요.
+  </p>
 
-    <main>
-      <h1 style="text-align: center; font-size: 1.3rem">🔨 왁뿌볼 부수기</h1>
-      <p class="smash-hint" id="smashHint">왁뿌볼을 눌러서 부숴보세요!</p>
+  <canvas id="smashCanvas"></canvas>
 
-      <section id="smashStage" class="smash-stage">
-        <div id="ballPreview" class="wakppul-ball">
-          <div class="ball-toppings" id="ballToppings"></div>
-        </div>
-      </section>
-
-      <section id="brokenState" class="broken-state hidden">
-        <h2>와장창! 다 부쉈어요! 🎉</h2>
-        <p>오늘의 스트레스도 왁뿌볼과 함께 산산조각 났어요.</p>
-        <div class="btn-row">
-          <button type="button" id="resmashBtn" class="btn-secondary btn-block">🔁 한 번 더 부수기</button>
-          <button type="button" id="remakeFromSmashBtn" class="btn-primary btn-block">🧫 다시 만들기</button>
-        </div>
-      </section>
-
-      <section id="emptyState" class="empty-state hidden">
-        <p>부술 왁뿌볼이 없어요!</p>
-        <a href="maker.html" class="btn-primary">🧫 왁뿌볼 만들러 가기</a>
-      </section>
-    </main>
-
-    <div id="smashAdBox" class="ad-box hidden">광고 영역</div>
-
-    <footer class="site-footer">
-      <p>🧪 말랑연구소 · <a href="about.html">이 사이트는 실제 제작법이 아닌 온라인 놀이용 시뮬레이터입니다</a></p>
-    </footer>
+  <div class="hud">
+    <a href="index.html" class="hud-brand">🧪 왁뿌볼 부수기</a>
+    <div class="hud-tools">
+      <button type="button" class="hud-btn" id="freezeBtn" aria-label="얼리기">🧊</button>
+      <button type="button" class="hud-btn" id="muteBtn" aria-label="소리 켜기/끄기">🔊</button>
+      <a href="maker.html" class="hud-btn" aria-label="다시 만들기">🧫</a>
+    </div>
   </div>
+
+  <p class="smash-hint" id="smashHint"><span class="pulse">꾹 눌러서 왁뿌볼을 부숴보세요 👆</span></p>
+  <div class="smash-counter" id="smashCounter">부순 왁뿌볼 <b id="smashCount">0</b>개</div>
+
+  <section id="brokenState" class="broken-state hidden">
+    <h2>와장창! 다 부쉈어요! 🎉</h2>
+    <p>오늘의 스트레스도 왁뿌볼과 함께 산산조각 났어요.</p>
+    <div class="btn-row">
+      <button type="button" id="resmashBtn" class="btn-secondary btn-block">🔁 한 번 더 부수기</button>
+      <button type="button" id="remakeFromSmashBtn" class="btn-primary btn-block">🧫 다시 만들기</button>
+    </div>
+  </section>
+
+  <section id="emptyState" class="empty-state hidden">
+    <p>부술 왁뿌볼이 없어요!</p>
+    <a href="maker.html" class="btn-primary">🧫 왁뿌볼 만들러 가기</a>
+  </section>
+
+  <div id="smashAdBox" class="ad-box hidden">광고 영역</div>
 
   <script src="script.js" defer></script>
 </body>
