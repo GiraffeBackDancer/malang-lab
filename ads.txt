@@ -1,0 +1,4 @@
+# Google AdSense 승인을 받은 뒤, 아래 줄의 pub-XXXXXXXXXXXXXXXX를
+# 실제 AdSense 게시자 ID로 바꾸고 맨 앞의 "# "를 지워서 활성화하세요.
+# 게시자 ID는 AdSense 계정 > 계정 > 계정 정보에서 확인할 수 있습니다.
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

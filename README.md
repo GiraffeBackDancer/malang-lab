@@ -8,13 +8,17 @@
 
 ```
 malang-lab/
-├── index.html   # 메인 — 왁뿌볼 공장 소개 및 시작 버튼
-├── maker.html   # 나만의 왁뿌볼 만들기 (선택 + 실시간 미리보기)
-├── result.html  # 완성된 왁뿌볼 결과 카드
-├── smash.html   # 왁뿌볼 부수기 게임
-├── about.html   # 소개 및 이용 안내, 주의사항
-├── style.css    # 전체 스타일 (파스텔톤, 모바일 반응형)
-├── script.js    # 전체 로직 (선택 상태, 점수 계산, 게임, localStorage)
+├── index.html    # 메인 — 왁뿌볼 공장 소개 및 시작 버튼
+├── maker.html    # 나만의 왁뿌볼 만들기 (선택 + 실시간 미리보기)
+├── result.html   # 완성된 왁뿌볼 결과 카드
+├── smash.html    # 왁뿌볼 부수기 게임
+├── about.html    # 소개 및 이용 안내, 주의사항
+├── privacy.html  # 개인정보처리방침 (쿠키·광고 고지 포함)
+├── style.css     # 전체 스타일 (파스텔톤, 모바일 반응형)
+├── script.js     # 전체 로직 (선택 상태, 점수 계산, 게임, localStorage)
+├── sitemap.xml   # 검색엔진용 사이트맵
+├── robots.txt    # 크롤러 허용 및 sitemap 위치 안내
+├── ads.txt       # Google AdSense 게시자 ID 등록용 (승인 후 채우기)
 └── README.md
 ```
 
@@ -66,6 +70,33 @@ python3 -m http.server 8000
   배포돼요.
 - 빌드 명령이 필요 없으므로 빌드 커맨드는 비워두고, 배포(퍼블리시)
   디렉터리만 저장소 루트(`/`)로 지정하면 됩니다.
+
+## SEO / Google AdSense 준비
+
+- **sitemap.xml / robots.txt**: 검색엔진 크롤링·색인을 위해 추가했어요.
+  현재 `https://wakppuland.netlify.app` 를 임시 도메인으로 넣어뒀으니,
+  **실제 배포 주소가 정해지면 `sitemap.xml`, `robots.txt`, 각 HTML의
+  `canonical`/`og:url` 태그에 있는 도메인을 전부 교체**해주세요
+  (각 파일에 `실제 배포 주소가 정해지면 ... 교체하세요` 주석으로
+  표시해뒀어요).
+- **메타 태그**: 모든 페이지에 고유한 `description`, `canonical`,
+  Open Graph 태그를 추가했어요.
+- **개인정보처리방침**: `privacy.html`에 쿠키·광고(Google AdSense)
+  고지, 방문 통계, 아동 개인정보, 문의 방법을 포함해 AdSense 심사에
+  필요한 최소 요건을 갖췄어요.
+- **ads.txt**: AdSense 승인 후 발급받는 게시자 ID(`pub-...`)를
+  `ads.txt`에 채워 넣어야 광고가 정상적으로 게재돼요. 지금은 주석
+  처리된 안내만 들어있어요.
+
+**AdSense 심사 신청 전 직접 확인해야 할 것:**
+- [ ] 실제 도메인으로 배포 완료 (Netlify 등)
+- [ ] 위 파일들의 임시 도메인을 실제 주소로 교체
+- [ ] Google AdSense 계정 생성 후 사이트 등록, 발급된 코드 스니펫을
+      각 페이지 `<head>`에 추가 (현재 `<!-- 실제 배포 시 여기에 Google
+      Analytics / AdSense 스니펫을 추가하세요 -->` 주석 위치 참고)
+- [ ] `ads.txt`에 실제 게시자 ID 반영
+- [ ] 콘텐츠가 충분한지 재검토 — AdSense는 "충분한 원본 콘텐츠"를
+      요구하므로, 페이지 수·설명 문구가 부족하면 반려될 수 있어요
 
 ## 기술 스택
 
