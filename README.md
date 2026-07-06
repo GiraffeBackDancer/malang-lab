@@ -84,17 +84,16 @@ python3 -m http.server 8000
 - **개인정보처리방침**: `privacy.html`에 쿠키·광고(Google AdSense)
   고지, 방문 통계, 아동 개인정보, 문의 방법을 포함해 AdSense 심사에
   필요한 최소 요건을 갖췄어요.
-- **ads.txt**: AdSense 승인 후 발급받는 게시자 ID(`pub-...`)를
-  `ads.txt`에 채워 넣어야 광고가 정상적으로 게재돼요. 지금은 주석
-  처리된 안내만 들어있어요.
+- **ads.txt**: 게시자 ID `pub-7856223539466075`로 채워뒀어요.
+- **AdSense 스크립트**: `adsbygoogle.js` 스니펫을 6개 페이지
+  `<head>`에 모두 추가했어요.
 
 **AdSense 심사 신청 전 직접 확인해야 할 것:**
 - [ ] 실제 도메인으로 배포 완료 (Netlify 등)
-- [ ] 위 파일들의 임시 도메인을 실제 주소로 교체
-- [ ] Google AdSense 계정 생성 후 사이트 등록, 발급된 코드 스니펫을
-      각 페이지 `<head>`에 추가 (현재 `<!-- 실제 배포 시 여기에 Google
-      Analytics / AdSense 스니펫을 추가하세요 -->` 주석 위치 참고)
-- [ ] `ads.txt`에 실제 게시자 ID 반영
+- [x] `ads.txt`에 실제 게시자 ID 반영
+- [x] AdSense 코드 스니펫을 모든 페이지에 추가
+- [ ] 위 파일들의 임시 도메인(`wakppuland.netlify.app`)을 실제 주소로
+      교체 (`sitemap.xml`, `robots.txt`, 각 HTML의 `canonical`/`og:url`)
 - [ ] 콘텐츠가 충분한지 재검토 — AdSense는 "충분한 원본 콘텐츠"를
       요구하므로, 페이지 수·설명 문구가 부족하면 반려될 수 있어요
 
@@ -102,7 +101,8 @@ python3 -m http.server 8000
 
 - HTML5 / CSS3 / Vanilla JavaScript (프레임워크·빌드 도구 없음)
 - 데이터 저장: 브라우저 `localStorage`
-- 외부 네트워크 요청 없음 (폰트·이미지 등 전부 인라인/시스템 자원 사용)
+- 폰트·이미지 등은 전부 인라인/시스템 자원 사용, 외부 요청은 Google
+  AdSense 스크립트(`adsbygoogle.js`) 하나뿐
 
 백엔드가 필요해지면 `docs/backend-guide.md` 문서를 참고하세요.
 
