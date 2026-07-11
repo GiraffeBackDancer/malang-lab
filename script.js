@@ -387,7 +387,6 @@ function initSmash() {
   const hintEl = document.getElementById('smashHint');
   const emptyState = document.getElementById('emptyState');
   const brokenState = document.getElementById('brokenState');
-  const adBox = document.getElementById('smashAdBox');
 
   if (!result) {
     canvas.classList.add('hidden');
@@ -1230,7 +1229,6 @@ function initSmash() {
     pressure = 0;
     setTimeout(() => {
       if (brokenState) brokenState.classList.remove('hidden');
-      if (adBox) adBox.classList.remove('hidden');
     }, 700);
   }
   function applyDamage(dt, impulse) {
@@ -1362,7 +1360,6 @@ function initSmash() {
   if (resmashBtn) {
     resmashBtn.addEventListener('click', () => {
       if (brokenState) brokenState.classList.add('hidden');
-      if (adBox) adBox.classList.add('hidden');
       spawnBall();
     });
   }
